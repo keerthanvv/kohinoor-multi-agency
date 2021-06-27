@@ -3,3 +3,10 @@
 @import url(~font-awesome/css/font-awesome.css);
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.text-center{
+        text-align: center;
+}
+
+.top-text-margin{
+    margin-top: 20px;
+}
