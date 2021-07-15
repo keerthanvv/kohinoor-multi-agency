@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
+import { User } from 'src/app/user';
 
 
 @Component({
@@ -8,22 +11,27 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  credentials={
-    username:'',
-    password:''
-  }
-
-  constructor() { }
+   user = new User();
+  constructor(private _loginService:LoginService){}
 
   ngOnInit(): void {
   }
 onSubmit(){
   console.log("form submited");
-  if((this.credentials.username!='' && this.credentials.password!='') && (this.credentials.username!=null &&this.credentials.password!=null)){    
-  }else{
-    console.log("wrong creds");
-    Swal.fire('Any of the Login fields can not be empty.Please try again!!')
+  this._loginService.loginUser(this.user).subscribe(
+    data => {console.log("responce recived")
+    if(data.emailId ==this.user.emailId && data.password==this.user.password){
+      console.log("equls");
+
+    }
+  },
+    error => {console.log("exception occured")
+  Swal.fire("you have entered wrong email or password")
+
+  }
+
+  )
+
   }
 }
-}
+

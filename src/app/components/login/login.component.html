@@ -9,21 +9,21 @@
             <img class="img-fluid top-text-margin" style="width: 100px;" src="/assets/login-icon.png">   
         </div> 
             <div class="class text-center top-text-margin ">
-                <form (ngSubmit)="onSubmit()">
+                <form #loginform="ngForm" (ngSubmit)="onSubmit()">
                     <mat-form-field class="full-width">
-                        <mat-label>username</mat-label>
-                    <input  [(ngModel)]="credentials.username" name="username" required type="text" matInput/>
+                        <mat-label>email</mat-label>
+                    <input  name="email" required type="text" [(ngModel)]="user.emailId" matInput/>
                     </mat-form-field>,
                     <mat-form-field class="full-width">
                         <mat-label>password</mat-label>
-                    <input [(ngModel)]="credentials.password" name="password" required type="password" matInput/>
+                    <input  name="password" required type="password" [(ngModel)]="user.password" matInput/>
                     </mat-form-field>
                    <div class="container text-center">
                        <button type="submit" mat-raised-button color="primary">Login</button>
                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="warn">Reset</button>
                    </div>
                 </form>
-                {{credentials | json}}
+               
             </div>
         </div>
         </div>
