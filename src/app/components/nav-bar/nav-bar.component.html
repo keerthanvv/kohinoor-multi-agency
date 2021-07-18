@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
    <span><a mat-icon-button routerLink="/">Kohinoor</a></span>
    <span style="margin-right: 40px;"></span>
-   <a mat-icon-button routerLink="/userreg">Register Delivery Patner</a>
+   <a *ngIf="isLoggedIn()" mat-icon-button routerLink="/userreg"><mat-icon>person_add</mat-icon></a>
    <span class="rightfloat"></span>
    <a *ngIf="!isLoggedIn()" mat-icon-button routerLink="/login">Login</a>
    <a *ngIf="isLoggedIn()" mat-icon-button routerLink="/login" (click)="logOut()"><mat-icon>exit_to_app</mat-icon></a>
